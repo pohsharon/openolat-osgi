@@ -31,6 +31,7 @@
           <instructions>
             <Bundle-SymbolicName>${project.groupId}.${project.artifactId}</Bundle-SymbolicName>
             <Export-Package>my.um.cbse.api.*</Export-Package>
+            <_noee>true</_noee>
           </instructions>
         </configuration>
       </plugin>
