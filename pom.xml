@@ -1,0 +1,57 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>my.um.cbse</groupId>
+  <artifactId>openolat-osgi</artifactId>
+  <version>1.0.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
+
+  <modules>
+    <module>common-api</module>
+    <module>course-component</module>
+    <module>enrollment-component</module>
+    <module>scheduling-component</module>
+    <module>assessment-component</module>
+    <module>communication-component</module>
+  </modules>
+
+  <properties>
+    <maven.compiler.release>17</maven.compiler.release>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.bundle.plugin.version>5.1.9</maven.bundle.plugin.version>
+    <osgi.core.version>7.0.0</osgi.core.version>
+    <osgi.annotations.version>1.5.1</osgi.annotations.version>
+  </properties>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.osgi</groupId>
+        <artifactId>org.osgi.core</artifactId>
+        <version>6.0.0</version>
+        <scope>provided</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.osgi</groupId>
+        <artifactId>org.osgi.service.component.annotations</artifactId>
+        <version>1.5.1</version>
+        <scope>provided</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.felix</groupId>
+          <artifactId>maven-bundle-plugin</artifactId>
+          <version>${maven.bundle.plugin.version}</version>
+          <extensions>true</extensions>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+</project>
