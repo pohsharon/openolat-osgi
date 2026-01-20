@@ -21,7 +21,7 @@ import my.um.cbse.api.service.CourseService;
  */
 @Command(scope = "course", name = "members", description = "List course members")
 @Component(
-    service = ListMembersCommand.class,
+    service = Action.class,
     property = {
         "osgi.command.scope=course",
         "osgi.command.function=members"
@@ -40,6 +40,11 @@ public class ListMembersCommand implements Action {
 
     @Reference(cardinality = org.osgi.service.component.annotations.ReferenceCardinality.OPTIONAL)
     private CourseService courseService;
+
+    public void members(String courseId) throws Exception {
+        this.courseId = courseId;
+        execute();
+    }
 
     @Override
     public Object execute() throws Exception {

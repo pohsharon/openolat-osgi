@@ -18,10 +18,10 @@ import my.um.cbse.api.service.CourseService;
  */
 @Command(scope = "course", name = "update-role", description = "Update a member's role")
 @Component(
-    service = UpdateMemberRoleCommand.class,
+    service = Action.class,
     property = {
         "osgi.command.scope=course",
-        "osgi.command.function=update-role"
+        "osgi.command.function=update_role"
     }
 )
 public class UpdateMemberRoleCommand implements Action {
@@ -40,6 +40,14 @@ public class UpdateMemberRoleCommand implements Action {
 
     @Reference(cardinality = org.osgi.service.component.annotations.ReferenceCardinality.OPTIONAL)
     private CourseService courseService;
+
+    public void update_role(String courseId, String userId, String newRole, String updatedBy) throws Exception {
+        this.courseId = courseId;
+        this.userId = userId;
+        this.newRole = newRole;
+        this.updatedBy = updatedBy;
+        execute();
+    }
 
     @Override
     public Object execute() throws Exception {

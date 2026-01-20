@@ -19,10 +19,10 @@ import my.um.cbse.api.service.CourseService;
  */
 @Command(scope = "course", name = "add-member", description = "Add a member to a course")
 @Component(
-    service = AddMemberCommand.class,
+    service = Action.class,
     property = {
         "osgi.command.scope=course",
-        "osgi.command.function=add-member"
+        "osgi.command.function=add_member"
     }
 )
 public class AddMemberCommand implements Action {
@@ -47,6 +47,15 @@ public class AddMemberCommand implements Action {
 
     @Reference(cardinality = org.osgi.service.component.annotations.ReferenceCardinality.OPTIONAL)
     private CourseService courseService;
+
+    public void add_member(String courseId, String userId, String userName, String role, String addedBy) throws Exception {
+        this.courseId = courseId;
+        this.userId = userId;
+        this.userName = userName;
+        this.role = role;
+        this.addedBy = addedBy;
+        execute();
+    }
 
     @Override
     public Object execute() throws Exception {

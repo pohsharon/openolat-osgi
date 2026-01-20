@@ -19,10 +19,10 @@ import my.um.cbse.api.service.CourseService;
  */
 @Command(scope = "course", name = "add-element", description = "Add a course element")
 @Component(
-    service = AddElementCommand.class,
+    service = Action.class,
     property = {
         "osgi.command.scope=course",
-        "osgi.command.function=add-element"
+        "osgi.command.function=add_element"
     }
 )
 public class AddElementCommand implements Action {
@@ -44,6 +44,14 @@ public class AddElementCommand implements Action {
 
     @Reference(cardinality = org.osgi.service.component.annotations.ReferenceCardinality.OPTIONAL)
     private CourseService courseService;
+
+    public void add_element(String courseId, String title, String type, String userId) throws Exception {
+        this.courseId = courseId;
+        this.title = title;
+        this.type = type;
+        this.userId = userId;
+        execute();
+    }
 
     @Override
     public Object execute() throws Exception {

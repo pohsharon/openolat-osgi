@@ -17,7 +17,7 @@ import my.um.cbse.api.service.CourseService;
  */
 @Command(scope = "course", name = "delete", description = "Delete a course")
 @Component(
-    service = DeleteCourseCommand.class,
+    service = Action.class,
     property = {
         "osgi.command.scope=course",
         "osgi.command.function=delete"
@@ -33,6 +33,12 @@ public class DeleteCourseCommand implements Action {
 
     @Reference(cardinality = org.osgi.service.component.annotations.ReferenceCardinality.OPTIONAL)
     private CourseService courseService;
+
+    public void delete(String courseId, String userId) throws Exception {
+        this.courseId = courseId;
+        this.userId = userId;
+        execute();
+    }
 
     @Override
     public Object execute() throws Exception {

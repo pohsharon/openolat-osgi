@@ -17,10 +17,10 @@ import my.um.cbse.api.service.CourseService;
  */
 @Command(scope = "course", name = "move-element", description = "Move/reorder a course element")
 @Component(
-    service = MoveElementCommand.class,
+    service = Action.class,
     property = {
         "osgi.command.scope=course",
-        "osgi.command.function=move-element"
+        "osgi.command.function=move_element"
     }
 )
 public class MoveElementCommand implements Action {
@@ -42,6 +42,15 @@ public class MoveElementCommand implements Action {
 
     @Reference(cardinality = org.osgi.service.component.annotations.ReferenceCardinality.OPTIONAL)
     private CourseService courseService;
+
+    public void move_element(String courseId, String elementId, String newParentId, int newOrder, String userId) throws Exception {
+        this.courseId = courseId;
+        this.elementId = elementId;
+        this.newParentId = newParentId;
+        this.newOrder = newOrder;
+        this.userId = userId;
+        execute();
+    }
 
     @Override
     public Object execute() throws Exception {

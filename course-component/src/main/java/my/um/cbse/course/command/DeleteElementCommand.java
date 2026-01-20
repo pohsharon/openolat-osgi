@@ -17,10 +17,10 @@ import my.um.cbse.api.service.CourseService;
  */
 @Command(scope = "course", name = "delete-element", description = "Delete a course element")
 @Component(
-    service = DeleteElementCommand.class,
+    service = Action.class,
     property = {
         "osgi.command.scope=course",
-        "osgi.command.function=delete-element"
+        "osgi.command.function=delete_element"
     }
 )
 public class DeleteElementCommand implements Action {
@@ -36,6 +36,13 @@ public class DeleteElementCommand implements Action {
 
     @Reference(cardinality = org.osgi.service.component.annotations.ReferenceCardinality.OPTIONAL)
     private CourseService courseService;
+
+    public void delete_element(String courseId, String elementId, String userId) throws Exception {
+        this.courseId = courseId;
+        this.elementId = elementId;
+        this.userId = userId;
+        execute();
+    }
 
     @Override
     public Object execute() throws Exception {

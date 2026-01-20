@@ -17,10 +17,10 @@ import my.um.cbse.api.service.CourseService;
  */
 @Command(scope = "course", name = "link-resource", description = "Link a learning resource to a course element")
 @Component(
-    service = LinkResourceCommand.class,
+    service = Action.class,
     property = {
         "osgi.command.scope=course",
-        "osgi.command.function=link-resource"
+        "osgi.command.function=link_resource"
     }
 )
 public class LinkResourceCommand implements Action {
@@ -39,6 +39,14 @@ public class LinkResourceCommand implements Action {
 
     @Reference(cardinality = org.osgi.service.component.annotations.ReferenceCardinality.OPTIONAL)
     private CourseService courseService;
+
+    public void link_resource(String courseId, String elementId, String resourceId, String userId) throws Exception {
+        this.courseId = courseId;
+        this.elementId = elementId;
+        this.resourceId = resourceId;
+        this.userId = userId;
+        execute();
+    }
 
     @Override
     public Object execute() throws Exception {

@@ -58,6 +58,7 @@
               *
             </Import-Package>
             <Karaf-Commands>*</Karaf-Commands>
+            <_dsannotations>*</_dsannotations>
             <_noee>true</_noee>
           </instructions>
         </configuration>

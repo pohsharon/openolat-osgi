@@ -17,10 +17,10 @@ import my.um.cbse.api.service.CourseService;
  */
 @Command(scope = "course", name = "remove-member", description = "Remove a member from a course")
 @Component(
-    service = RemoveMemberCommand.class,
+    service = Action.class,
     property = {
         "osgi.command.scope=course",
-        "osgi.command.function=remove-member"
+        "osgi.command.function=remove_member"
     }
 )
 public class RemoveMemberCommand implements Action {
@@ -36,6 +36,13 @@ public class RemoveMemberCommand implements Action {
 
     @Reference(cardinality = org.osgi.service.component.annotations.ReferenceCardinality.OPTIONAL)
     private CourseService courseService;
+
+    public void remove_member(String courseId, String userId, String removedBy) throws Exception {
+        this.courseId = courseId;
+        this.userId = userId;
+        this.removedBy = removedBy;
+        execute();
+    }
 
     @Override
     public Object execute() throws Exception {

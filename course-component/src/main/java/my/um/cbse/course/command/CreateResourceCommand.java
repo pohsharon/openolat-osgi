@@ -19,10 +19,10 @@ import my.um.cbse.api.service.CourseService;
  */
 @Command(scope = "course", name = "create-resource", description = "Create a learning resource")
 @Component(
-    service = CreateResourceCommand.class,
+    service = Action.class,
     property = {
         "osgi.command.scope=course",
-        "osgi.command.function=create-resource"
+        "osgi.command.function=create_resource"
     }
 )
 public class CreateResourceCommand implements Action {
@@ -41,6 +41,13 @@ public class CreateResourceCommand implements Action {
 
     @Reference(cardinality = org.osgi.service.component.annotations.ReferenceCardinality.OPTIONAL)
     private CourseService courseService;
+
+    public void create_resource(String title, String type, String ownerId) throws Exception {
+        this.title = title;
+        this.type = type;
+        this.ownerId = ownerId;
+        execute();
+    }
 
     @Override
     public Object execute() throws Exception {

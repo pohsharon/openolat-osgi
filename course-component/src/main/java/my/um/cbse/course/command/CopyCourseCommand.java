@@ -18,7 +18,7 @@ import my.um.cbse.api.service.CourseService;
  */
 @Command(scope = "course", name = "copy", description = "Copy an existing course")
 @Component(
-    service = CopyCourseCommand.class,
+    service = Action.class,
     property = {
         "osgi.command.scope=course",
         "osgi.command.function=copy"
@@ -37,6 +37,12 @@ public class CopyCourseCommand implements Action {
 
     @Reference(cardinality = org.osgi.service.component.annotations.ReferenceCardinality.OPTIONAL)
     private CourseService courseService;
+
+    public void copy(String sourceCourseId, String ownerId) throws Exception {
+        this.sourceCourseId = sourceCourseId;
+        this.ownerId = ownerId;
+        execute();
+    }
 
     @Override
     public Object execute() throws Exception {

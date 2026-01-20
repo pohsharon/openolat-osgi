@@ -17,10 +17,10 @@ import my.um.cbse.api.service.CourseService;
  */
 @Command(scope = "course", name = "unlink-resource", description = "Unlink a learning resource from a course element")
 @Component(
-    service = UnlinkResourceCommand.class,
+    service = Action.class,
     property = {
         "osgi.command.scope=course",
-        "osgi.command.function=unlink-resource"
+        "osgi.command.function=unlink_resource"
     }
 )
 public class UnlinkResourceCommand implements Action {
@@ -36,6 +36,13 @@ public class UnlinkResourceCommand implements Action {
 
     @Reference(cardinality = org.osgi.service.component.annotations.ReferenceCardinality.OPTIONAL)
     private CourseService courseService;
+
+    public void unlink_resource(String courseId, String elementId, String userId) throws Exception {
+        this.courseId = courseId;
+        this.elementId = elementId;
+        this.userId = userId;
+        execute();
+    }
 
     @Override
     public Object execute() throws Exception {
