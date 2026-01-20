@@ -30,7 +30,11 @@
         <configuration>
           <instructions>
             <Bundle-SymbolicName>${project.groupId}.${project.artifactId}</Bundle-SymbolicName>
-            <Export-Package>my.um.cbse.api.*</Export-Package>
+              <Export-Package>
+                my.um.cbse.api.service;version="${project.version}",
+                my.um.cbse.api.model;version="${project.version}"
+              </Export-Package>
+              <Import-Package>*</Import-Package>
             <_noee>true</_noee>
           </instructions>
         </configuration>
