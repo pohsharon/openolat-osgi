@@ -2,6 +2,7 @@ package my.um.cbse.enrollment.command;
 
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
+import org.apache.karaf.shell.api.action.Action;
 
 import my.um.cbse.api.model.EnrollmentResult;
 import my.um.cbse.api.model.UserRole;
@@ -31,12 +32,12 @@ public class ManualEnrolCommand implements Action {
     @Reference(cardinality = org.osgi.service.component.annotations.ReferenceCardinality.OPTIONAL)
     private EnrollmentService enrollmentService;
 
-    public ManualEnrolCommand manualEnrol(String studentId, String courseId, String enrolledBy, String role) {
+    public void manualEnrol(String studentId, String courseId, String enrolledBy, String role) throws Exception {
         this.studentId = studentId;
         this.courseId = courseId;
         this.enrolledBy = enrolledBy;
         this.roleArg = role;
-        return this;
+        execute();
     }
 
     @Override

@@ -34,6 +34,12 @@ public class EnrolCommand implements Action {
     @Reference(cardinality = org.osgi.service.component.annotations.ReferenceCardinality.OPTIONAL)
     private EnrollmentService enrollmentService;
 
+    public void enrol(String studentId, String courseId) throws Exception {
+        this.studentId = studentId;
+        this.courseId = courseId;
+        execute();
+    }
+
     @Override
     public Object execute() throws Exception {
         if (enrollmentService == null) {

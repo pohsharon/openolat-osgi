@@ -34,6 +34,13 @@ public class UpdateParticipationCommand implements Action {
     @Reference(cardinality = org.osgi.service.component.annotations.ReferenceCardinality.OPTIONAL)
     private EnrollmentService enrollmentService;
 
+    public void updateParticipation(String studentId, String courseId, String scoreArg) throws Exception {
+        this.studentId = studentId;
+        this.courseId = courseId;
+        this.scoreArg = scoreArg;
+        execute();
+    }
+
     @Override
     public Object execute() throws Exception {
         if (enrollmentService == null) {

@@ -39,6 +39,14 @@ public class ManualUnenrolCommand implements Action {
     @Reference(cardinality = org.osgi.service.component.annotations.ReferenceCardinality.OPTIONAL)
     private EnrollmentService enrollmentService;
 
+    public void manualUnenrol(String studentId, String courseId, String unenrolledBy, String roleArg) throws Exception {
+        this.studentId = studentId;
+        this.courseId = courseId;
+        this.unenrolledBy = unenrolledBy;
+        this.roleArg = roleArg;
+        execute();
+    }
+
     @Override
     public Object execute() throws Exception {
         if (enrollmentService == null) {

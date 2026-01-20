@@ -2,7 +2,7 @@ package my.um.cbse.enrollment.command;
 
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
-
+import org.apache.karaf.shell.api.action.Action;
 import my.um.cbse.api.model.EnrollmentResult;
 import my.um.cbse.api.service.EnrollmentService;
 
@@ -28,10 +28,10 @@ public class UnenrolCommand implements Action {
     @Reference(cardinality = org.osgi.service.component.annotations.ReferenceCardinality.OPTIONAL)
     private EnrollmentService enrollmentService;
 
-    public UnenrolCommand unenrol(String studentId, String courseId) {
+    public void unenrol(String studentId, String courseId) throws Exception {
         this.studentId = studentId;
         this.courseId = courseId;
-        return this;
+        execute();
     }
 
     @Override

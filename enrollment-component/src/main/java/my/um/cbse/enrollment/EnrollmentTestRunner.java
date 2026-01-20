@@ -80,14 +80,32 @@ public class EnrollmentTestRunner {
         // Bob hasn't completed any courses yet
         enrollmentService.registerStudent(bob);
         
-        Student charlie = new Student("STU003", "Charlie Brown", "charlie@university.edu");
+        Student charlie = new Student("STU003", "Charlie Kirk", "charlie@university.edu");
         charlie.setRole(UserRole.LECTURER);
         enrollmentService.registerStudent(charlie);
         
         Student diana = new Student("STU004", "Diana Prince", "diana@university.edu");
         enrollmentService.registerStudent(diana);
         
-        System.out.println("✓ Test data initialized: 4 students, 3 courses (from service)");
+        // Register lecturers
+        Student lecturer1 = new Student("LEC001", "Dr. Emma Wilson", "emma.wilson@university.edu");
+        lecturer1.setRole(UserRole.LECTURER);
+        enrollmentService.registerStudent(lecturer1);
+        
+        Student lecturer2 = new Student("LEC002", "Prof. James Anderson", "james.anderson@university.edu");
+        lecturer2.setRole(UserRole.LECTURER);
+        enrollmentService.registerStudent(lecturer2);
+        
+        Student lecturer3 = new Student("LEC003", "Dr. Sarah Martinez", "sarah.martinez@university.edu");
+        lecturer3.setRole(UserRole.LECTURER);
+        enrollmentService.registerStudent(lecturer3);
+        
+        // Register admin
+        Student admin = new Student("ADMIN001", "Admin User", "admin@university.edu");
+        admin.setRole(UserRole.ADMIN);
+        enrollmentService.registerStudent(admin);
+        
+        System.out.println("✓ Test data initialized: 4 students, 3 lecturers, 1 admin, 3 courses (from service)");
     }
     
     private void testSelfEnrollment() {

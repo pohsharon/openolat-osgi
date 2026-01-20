@@ -11,18 +11,14 @@ import java.util.List;
 
 /**
  * Karaf Shell Command: enrollmentHistory
- * Display enrollment history for a student in a course
+ * View enrollment history for a student in a course
  */
-@Command(scope = "cbse", name = "enrollmentHistory", description = "Display enrollment history for a student in a course")
-@Component(
-    service = EnrollmentHistoryCommand.class,
-    property = {
-        "osgi.command.scope=cbse",
-        "osgi.command.function=enrollmentHistory"
-    }
-)
+@Command(scope = "cbse", name = "enrollmentHistory", description = "Show enrollment history for a course or student")
+@Component(service = org.apache.karaf.shell.api.action.Action.class, immediate = true, property = {
+    "osgi.command.scope=cbse",
+    "osgi.command.function=enrollmentHistory"
+})
 public class EnrollmentHistoryCommand implements Action {
-
     @Argument(index = 0, name = "studentId", description = "The student ID", required = true)
     private String studentId;
 
@@ -31,6 +27,12 @@ public class EnrollmentHistoryCommand implements Action {
 
     @Reference(cardinality = org.osgi.service.component.annotations.ReferenceCardinality.OPTIONAL)
     private EnrollmentService enrollmentService;
+
+    public void enrollmentHistory(String studentId, String courseId) throws Exception {
+        this.studentId = studentId;
+        this.courseId = courseId;
+        execute();
+    }
 
     @Override
     public Object execute() throws Exception {

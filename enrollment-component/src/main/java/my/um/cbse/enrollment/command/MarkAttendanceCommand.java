@@ -37,6 +37,14 @@ public class MarkAttendanceCommand implements Action {
     @Reference(cardinality = org.osgi.service.component.annotations.ReferenceCardinality.OPTIONAL)
     private EnrollmentService enrollmentService;
 
+    public void markAttendance(String studentId, String courseId, String sessionDate, String presentArg) throws Exception {
+        this.studentId = studentId;
+        this.courseId = courseId;
+        this.sessionDate = sessionDate;
+        this.presentArg = presentArg;
+        execute();
+    }
+
     @Override
     public Object execute() throws Exception {
         if (enrollmentService == null) {

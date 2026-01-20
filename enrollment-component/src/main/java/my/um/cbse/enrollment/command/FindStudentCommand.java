@@ -2,7 +2,7 @@ package my.um.cbse.enrollment.command;
 
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
-
+import org.apache.karaf.shell.api.action.Action;
 import my.um.cbse.api.model.Student;
 import my.um.cbse.api.service.EnrollmentService;
 import java.util.List;
@@ -29,10 +29,10 @@ public class FindStudentCommand implements Action {
     @Reference(cardinality = org.osgi.service.component.annotations.ReferenceCardinality.OPTIONAL)
     private EnrollmentService enrollmentService;
 
-    public FindStudentCommand findStudent(String courseId, String searchTerm) {
+    public void findStudent(String courseId, String searchTerm) throws Exception {
         this.courseId = courseId;
         this.searchTerm = searchTerm;
-        return this;
+        execute();
     }
 
     @Override
