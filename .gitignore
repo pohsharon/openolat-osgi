@@ -7,9 +7,19 @@ target/
 .idea/
 .vscode/
 *.iml
+.settings/
+.project
+.classpath
 
-# Karaf
-karaf.log
+# Karaf Runtime Files
+apache-karaf-*/data/
+apache-karaf-*/instances/
+apache-karaf-*/lock
+apache-karaf-*/karaf.pid
+apache-karaf-*/deploy/*.jar
 
 # Java
 *.class
+
+# Project Documentation
+IMPLEMENTATION_SUMMARY.md
