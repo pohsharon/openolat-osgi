@@ -13,6 +13,19 @@
   <packaging>bundle</packaging>
 
   <dependencies>
+        <!-- JUnit and Mockito for unit testing -->
+        <dependency>
+          <groupId>junit</groupId>
+          <artifactId>junit</artifactId>
+          <version>4.13.2</version>
+          <scope>test</scope>
+        </dependency>
+        <dependency>
+          <groupId>org.mockito</groupId>
+          <artifactId>mockito-core</artifactId>
+          <version>4.11.0</version>
+          <scope>test</scope>
+        </dependency>
     <dependency>
       <groupId>my.um.cbse</groupId>
       <artifactId>common-api</artifactId>
@@ -31,6 +44,12 @@
       <version>6.0.0</version>
       <scope>provided</scope>
     </dependency>
+    <dependency>
+      <groupId>org.apache.karaf.shell</groupId>
+      <artifactId>org.apache.karaf.shell.core</artifactId>
+      <version>4.3.7</version>
+      <scope>provided</scope>
+    </dependency>
   </dependencies>
 
   <build>
@@ -42,7 +61,20 @@
         <configuration>
           <instructions>
             <Bundle-SymbolicName>${project.groupId}.${project.artifactId}</Bundle-SymbolicName>
-            <Private-Package>my.um.cbse.assessment.*</Private-Package>
+            <Private-Package>
+                my.um.cbse.assessment.*,
+                my.um.cbse.assessment.command.*
+              </Private-Package>
+              <Import-Package>
+                my.um.cbse.api.model;version="[1.0,2]",
+                my.um.cbse.api.service;version="[1.0,2]",
+                org.apache.karaf.shell.api.action.*,
+                org.osgi.service.component.annotations.*,
+                *
+              </Import-Package>
+              <_dsannotations>*</_dsannotations>
+            <Karaf-Commands>*</Karaf-Commands>
+            <_noee>true</_noee>
           </instructions>
         </configuration>
       </plugin>
