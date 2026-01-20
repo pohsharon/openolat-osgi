@@ -37,7 +37,6 @@ public class SubmitAssignmentCommand implements Action {
 
     @Override
     public Object execute() throws Exception {
-        // If you want to be safe:
         if (assessmentService == null) {
             System.out.println("ERROR: AssessmentService is not available");
             return null;
@@ -48,13 +47,12 @@ public class SubmitAssignmentCommand implements Action {
         submission.setStudentId(studentId);
         submission.setTextEntry(submissionContent);
 
-        // If your service supports it, do the real call here:
-        // Submission saved = assessmentService.submitAssignment(submission);
+        Submission saved = assessmentService.submitAssignment(submission);
 
         System.out.println("✓ SUCCESS: Submitted assignment for student " + studentId
                 + " (assessment " + assessmentId + ")");
         System.out.println("Submission content: " + submissionContent);
 
-        return submission;
+        return saved;
     }
 }

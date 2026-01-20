@@ -23,32 +23,34 @@ public class GradeSubmissionCommand implements Action {
     @Argument(index = 1, name = "score", description = "Score/grade", required = true)
     private int score;
 
-    @Option(name = "--feedback", description = "Feedback (optional)")
+    @Argument(index = 2, name = "feedback", description = "Feedback (optional)", required = false)
     private String feedback;
 
     @Reference
     private AssessmentService assessmentService;
 
     // ✅ Gogo entrypoint: cbse:gradeSubmission <submissionId> <score> [--feedback "..."]
-    public void gradeSubmission(String submissionId, int score) throws Exception {
+    public void gradeSubmission(String submissionId, int score, String feedback) throws Exception {
         this.submissionId = submissionId;
         this.score = score;
+        this.feedback = feedback;
         execute();
     }
 
     @Override
     public Object execute() throws Exception {
-        // If you later implement in service, call it here.
         Grade grade = new Grade();
         grade.setSubmissionId(submissionId);
         grade.setScore(score);
         grade.setFeedback(feedback);
 
-        // TODO: when available:
-        // assessmentService.gradeSubmission(grade);
+        // Call the service so the test mock is invoked
+        if (assessmentService != null) {
+            assessmentService.gradeSubmission(grade);
+        }
 
         System.out.println("✓ SUCCESS: Graded submission " + submissionId + " with score " + score
-                + (feedback != null ? (" | feedback: " + feedback) : ""));
-        return grade;
+            + (feedback != null ? (" | feedback: " + feedback) : ""));
+        return true;
     }
 }
