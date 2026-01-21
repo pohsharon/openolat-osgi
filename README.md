@@ -139,7 +139,7 @@ Your component should be:
 
 ### Enrollment Commands (UC11 - UC)
 
-### Communication Commands (UC16 - UC20)
+### Communication Commands (UC16 - UC23)
 
 | Description              | Command                                          | Example                                          |
 | :----------------------- | :----------------------------------------------- | :----------------------------------------------- |
