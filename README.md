@@ -2,7 +2,6 @@
 
 This repository contains the **OSGi-based implementation** of the system for the CBSE assignment, using **Apache Karaf** and **OSGi Declarative Services (DS)**.
 
-Each team member is responsible for implementing **one component** as an OSGi bundle.
 
 ---
 
@@ -79,13 +78,15 @@ Declarative Services are required for `@Component` and `@Reference` to work.
 ```bash
 bundle:install -s file:/ABS_PATH/openolat-osgi/common-api/target/common-api-1.0.0-SNAPSHOT.jar
 ```
-**Step 2 – Install your component only**
+**Step 2 – Install all components**
 
-Example for `assessment-component`:
 ```bash
+bundle:install -s file:/ABS_PATH/openolat-osgi/course-component/target/assessmcourseent-component-1.0.0-SNAPSHOT.jar
 bundle:install -s file:/ABS_PATH/openolat-osgi/assessment-component/target/assessment-component-1.0.0-SNAPSHOT.jar
+bundle:install -s file:/ABS_PATH/openolat-osgi/enrollment-component/target/enrollment-component-1.0.0-SNAPSHOT.jar
+bundle:install -s file:/ABS_PATH/openolat-osgi/scheduling-component/target/scheduling-component-1.0.0-SNAPSHOT.jar
+bundle:install -s file:/ABS_PATH/openolat-osgi/communication-component/target/communication-component-1.0.0-SNAPSHOT.jar
 ```
-Replace `assessment-component` with the component you are responsible for.
 
 ---
 
@@ -102,17 +103,14 @@ Your component should be:
 
 ---
 
-### 7. Start Implementing Your Component
+## 🧑🏻‍💻 Command Reference
 
-- **Interfaces** → `common-api`
-- **Implementation** → your own component module  
-  (e.g. `assessment-component/src/main/java/...`)
-
-#### OSGi Service Example
-```java
-@Component(service = AssessmentService.class)
-public class AssessmentServiceImpl implements AssessmentService {
-    // implementation
-}
-```
-
+### Assessment Management Commands (UC6 - UC10)
+| Description                     | Command                                                        | Example                                         |
+|:--------------------------------|:---------------------------------------------------------------|:------------------------------------------------|
+| Create a new assessment         | `cbse:createAssessment <courseId> <title> <maxScore> <deadline>`| `cbse:createAssessment CS101 "Final Exam" 100 2026-01-10` |
+| Submit an assignment            | `cbse:submitAssignment <assessmentId> <studentId> <content>`    | `cbse:submitAssignment A001 STU01 "My final answers"` |
+| Grade a submission              | `cbse:gradeSubmission <submissionId> <score> <feedback>`        | `cbse:gradeSubmission S001 85 "Good effort"`     |
+| View submissions for assessment | `cbse:listSubmissions <assessmentId>`                           | `cbse:listSubmissions A001`                      |
+| View grades for an assessment   | `cbse:viewGrades <assessmentId>`                                | `cbse:viewGrades A001`                           |
+| View assessment details         | `cbse:viewAssessment <assessmentId>`                            | `cbse:viewAssessment A001`                       |
