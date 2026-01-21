@@ -7,9 +7,11 @@ import org.apache.karaf.shell.api.action.lifecycle.Service;
 import org.apache.karaf.shell.api.action.lifecycle.Reference;
 import org.apache.karaf.shell.api.action.Action;
 
-@Command(scope = "cbse", name = "replyToTopic", description = "Add a reply to a topic")
+import java.util.List;
+
+@Command(scope = "cbse", name = "viewReplies", description = "View replies for a topic")
 @Service
-public class ReplyCommand implements Action {
+public class ViewRepliesCommand implements Action {
 
     @Reference
     private IForumService forumService;
@@ -17,16 +19,17 @@ public class ReplyCommand implements Action {
     @Argument(index = 0, name = "topicId", description = "Topic id", required = true, multiValued = false)
     String topicId;
 
-    @Argument(index = 1, name = "message", description = "Reply message", required = true, multiValued = false)
-    String message;
-
-    @Argument(index = 2, name = "author", description = "Author name", required = true, multiValued = false)
-    String author;
-
     @Override
     public Object execute() throws Exception {
-        forumService.addReply(topicId, message, author);
-        System.out.println("[ReplyCommand] Added reply to " + topicId + " by " + author);
+        List<String> replies = forumService.getRepliesByTopic(topicId);
+        if (replies.isEmpty()) {
+            System.out.println("[ViewRepliesCommand] No replies found for topic: " + topicId);
+        } else {
+            System.out.println("[ViewRepliesCommand] Replies for topic " + topicId + ":");
+            for (String reply : replies) {
+                System.out.println("  " + reply);
+            }
+        }
         return null;
     }
 }

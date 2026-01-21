@@ -10,7 +10,7 @@ import org.apache.karaf.shell.api.action.Action;
 /**
  * Create command for forum topics
  */
-@Command(scope = "forum", name = "create", description = "Create a topic")
+@Command(scope = "cbse", name = "createTopic", description = "Create a topic")
 @Service
 public class CreateTopicCommand implements Action {
 

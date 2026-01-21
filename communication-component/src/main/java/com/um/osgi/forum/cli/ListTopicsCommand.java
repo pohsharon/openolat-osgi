@@ -9,7 +9,7 @@ import org.apache.karaf.shell.api.action.Action;
 
 import java.util.List;
 
-@Command(scope = "forum", name = "list", description = "List topics for a course")
+@Command(scope = "cbse", name = "listTopics", description = "List topics for a course")
 @Service
 public class ListTopicsCommand implements Action {
 

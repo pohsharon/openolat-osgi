@@ -14,4 +14,12 @@ public interface IForumService {
     void addReply(String topicId, String content, String author);
 
     void deleteTopic(String topicId);
+
+    List<String> getRepliesByTopic(String topicId);
+
+    void lockTopic(String topicId, boolean lock);
+
+    void editTopic(String topicId, String newTitle);
+
+    void deleteReply(String topicId, int replyIndex);
 }

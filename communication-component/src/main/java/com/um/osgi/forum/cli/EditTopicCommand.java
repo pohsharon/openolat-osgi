@@ -7,9 +7,9 @@ import org.apache.karaf.shell.api.action.lifecycle.Service;
 import org.apache.karaf.shell.api.action.lifecycle.Reference;
 import org.apache.karaf.shell.api.action.Action;
 
-@Command(scope = "cbse", name = "replyToTopic", description = "Add a reply to a topic")
+@Command(scope = "cbse", name = "editTopic", description = "Edit a topic title")
 @Service
-public class ReplyCommand implements Action {
+public class EditTopicCommand implements Action {
 
     @Reference
     private IForumService forumService;
@@ -17,16 +17,13 @@ public class ReplyCommand implements Action {
     @Argument(index = 0, name = "topicId", description = "Topic id", required = true, multiValued = false)
     String topicId;
 
-    @Argument(index = 1, name = "message", description = "Reply message", required = true, multiValued = false)
-    String message;
-
-    @Argument(index = 2, name = "author", description = "Author name", required = true, multiValued = false)
-    String author;
+    @Argument(index = 1, name = "newTitle", description = "New topic title", required = true, multiValued = false)
+    String newTitle;
 
     @Override
     public Object execute() throws Exception {
-        forumService.addReply(topicId, message, author);
-        System.out.println("[ReplyCommand] Added reply to " + topicId + " by " + author);
+        forumService.editTopic(topicId, newTitle);
+        System.out.println("[EditTopicCommand] Updated topic " + topicId);
         return null;
     }
 }

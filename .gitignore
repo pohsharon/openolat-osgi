@@ -22,4 +22,5 @@ apache-karaf-*/deploy/*.jar
 *.class
 
 # Project Documentation
-IMPLEMENTATION_SUMMARY.md
+IMPLEMENTATION_SUMMARY.mdapache-karaf-4.4.4/
+apache-karaf-4.4.4.tar.gz
