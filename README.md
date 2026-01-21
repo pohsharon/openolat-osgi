@@ -147,7 +147,7 @@ Your component should be:
 | List topics for a course | `cbse:listTopics <courseId>`                     | `cbse:listTopics CS101`                          |
 | Add a reply to a topic   | `cbse:replyToTopic <topicId> <message> <author>` | `cbse:replyToTopic topic_1 "Great advice" Alice` |
 | View replies for a topic | `cbse:viewReplies <topicId>`                     | `cbse:viewReplies topic_1`                       |
-| Lock/unlock a topic      | `cbse:lockTopic <topicId> <true|false>`          | `cbse:lockTopic topic_1 true`                    |
+| Lock/unlock a topic      | `cbse:lockTopic <topicId> <true\|false>`         | `cbse:lockTopic topic_1 true`                    |
 | Edit a topic title       | `cbse:editTopic <topicId> <newTitle>`            | `cbse:editTopic topic_1 "Updated Title"`         |
 | Delete a reply           | `cbse:deleteReply <topicId> <replyIndex>`        | `cbse:deleteReply topic_1 0`                     |
 | Delete a topic           | `cbse:deleteTopic <topicId>`                     | `cbse:deleteTopic topic_1`                       |
