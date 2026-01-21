@@ -125,6 +125,25 @@ Your component should be:
 ## 🧑🏻‍💻 Command Reference
 
 ### Course Management Commands (UC1 - UC5)
+| Description                   | Command                                                                 | Example                                                                 |
+| :---------------------------- | :---------------------------------------------------------------------- | :---------------------------------------------------------------------- |
+| Create a new course           | `course:create <title> <ownerId>`                                      | `course:create "Machine Learning" OWNER001`                             |
+| Copy an existing course       | `course:copy <sourceCourseId> <ownerId>`                               | `course:copy CS101 OWNER002`                                            |
+| Delete a course               | `course:delete <courseId> <userId>`                                    | `course:delete CS103 OWNER001`                                          |
+| Update course basic info      | `course:update_info <courseId> <title> <description> <courseCode> <userId>` | `course:update_info CS101 "Database Systems Advanced" "Updated description" "CS101-V2" COACH001` |
+| Update course metadata        | `course:update_metadata <courseId> <semester> <credits> <license> <institution> <userId>` | `course:update_metadata CS101 "2024-2" 4 "MIT-License" "University of Computing" COACH001` |
+| Add member to course          | `course:add_member <courseId> <userId> <userName> <role> <addedBy>`    | `course:add_member CS101 USER001 "John Doe" COACH OWNER001`             |
+| Update member role            | `course:update_role <courseId> <userId> <newRole> <updatedBy>`         | `course:update_role CS101 USER001 OWNER OWNER001`                       |
+| Remove member from course     | `course:remove_member <courseId> <userId> <removedBy>`                | `course:remove_member CS101 USER002 OWNER001`                           |
+| Add course element            | `course:add_element <courseId> <title> <type> <userId>`                | `course:add_element CS101 "Week 1 - Introduction" STRUCTURE OWNER001`   |
+| Move course element           | `course:move_element <courseId> <elementId> <newParentId> <newOrder> <userId>` | `course:move_element CS101 ELEM001 ROOT 0 OWNER001`            |
+| Delete course element         | `course:delete_element <courseId> <elementId> <userId>`               | `course:delete_element CS101 ELEM001 OWNER001`                          |
+| Create learning resource      | `course:create_resource <title> <type> <ownerId>`                     | `course:create_resource "Lecture Video 1" VIDEO OWNER001`               |
+| Link resource to element      | `course:link_resource <courseId> <elementId> <resourceId> <userId>`   | `course:link_resource CS101 ELEM001 RES001 OWNER001`                    |
+| Delete learning resource      | `course:delete_resource <resourceId> <userId>`                        | `course:delete_resource RES001 OWNER001`                                |
+
+
+
 
 ### Assessment Management Commands (UC6 - UC10)
 
