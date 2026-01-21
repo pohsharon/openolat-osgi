@@ -7,7 +7,7 @@ import org.apache.karaf.shell.api.action.lifecycle.Service;
 import org.apache.karaf.shell.api.action.lifecycle.Reference;
 import org.apache.karaf.shell.api.action.Action;
 
-@Command(scope = "forum", name = "delete", description = "Delete a topic")
+@Command(scope = "cbse", name = "deleteTopic", description = "Delete a topic")
 @Service
 public class DeleteTopicCommand implements Action {
 

@@ -7,9 +7,9 @@ import org.apache.karaf.shell.api.action.lifecycle.Service;
 import org.apache.karaf.shell.api.action.lifecycle.Reference;
 import org.apache.karaf.shell.api.action.Action;
 
-@Command(scope = "cbse", name = "replyToTopic", description = "Add a reply to a topic")
+@Command(scope = "cbse", name = "deleteReply", description = "Delete a specific reply from a topic")
 @Service
-public class ReplyCommand implements Action {
+public class DeleteReplyCommand implements Action {
 
     @Reference
     private IForumService forumService;
@@ -17,16 +17,13 @@ public class ReplyCommand implements Action {
     @Argument(index = 0, name = "topicId", description = "Topic id", required = true, multiValued = false)
     String topicId;
 
-    @Argument(index = 1, name = "message", description = "Reply message", required = true, multiValued = false)
-    String message;
-
-    @Argument(index = 2, name = "author", description = "Author name", required = true, multiValued = false)
-    String author;
+    @Argument(index = 1, name = "replyIndex", description = "Reply index (0-based)", required = true, multiValued = false)
+    int replyIndex;
 
     @Override
     public Object execute() throws Exception {
-        forumService.addReply(topicId, message, author);
-        System.out.println("[ReplyCommand] Added reply to " + topicId + " by " + author);
+        forumService.deleteReply(topicId, replyIndex);
+        System.out.println("[DeleteReplyCommand] Deleted reply " + replyIndex + " from topic " + topicId);
         return null;
     }
 }
