@@ -104,6 +104,7 @@ Your component should be:
 ---
 
 ## 🧑🏻‍💻 Command Reference
+### Course Management Commands (UC1 - UC5)
 
 ### Assessment Management Commands (UC6 - UC10)
 | Description                     | Command                                                        | Example                                         |
@@ -114,3 +115,7 @@ Your component should be:
 | View submissions for assessment | `cbse:listSubmissions <assessmentId>`                           | `cbse:listSubmissions A001`                      |
 | View grades for an assessment   | `cbse:viewGrades <assessmentId>`                                | `cbse:viewGrades A001`                           |
 | View assessment details         | `cbse:viewAssessment <assessmentId>`                            | `cbse:viewAssessment A001`                       |
+
+### Enrollment Commands (UC11 - UC)
+### Communication Commands (UC - UC)
+### Scheduling Management Commands (UC - UC)
