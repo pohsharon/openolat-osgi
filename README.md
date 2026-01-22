@@ -158,6 +158,25 @@ Your component should be:
 
 ### Enrollment Commands (UC11 - UC)
 
+| Description | Command | Example |
+| :----------------------- | :----------------------------------------------- | :----------------------------------------------- |
+| Enrol a student | `cbse:enrol <courseId> <studentId> <role> <addedBy>` | `cbse:enrol CS101 STU002 STUDENT OWNER001` |
+| Manually enrol (admin/lecturer) | `cbse:manualEnrol <studentId> <courseId> <assigneeId> <role>` | `cbse:manualEnrol STU002 CS101 LEC001 LECTURER` |
+| Unenrol a student | `cbse:unenrol <courseId> <studentId> <removedBy>` | `cbse:unenrol CS101 STU002 OWNER001` |
+| Manual unenrol | `cbse:manualUnenrol <studentId> <courseId> <removedBy>` | `cbse:manualUnenrol STU002 CS101 ADMIN001` |
+| Create a student group | `cbse:createGroup <courseId> <groupId> <name> <createdBy>` | `cbse:createGroup CS101 G1 "Project Group 1" LEC001` |
+| Assign student to group | `cbse:assignStudentToGroup <courseId> <groupId> <studentId> <assignedBy>` | `cbse:assignStudentToGroup CS101 G1 STU002 LEC001` |
+| View groups for a course | `cbse:viewGroups <courseId>` | `cbse:viewGroups CS101` |
+| View course enrollments | `cbse:viewCourseEnrollments <courseId>` | `cbse:viewCourseEnrollments CS101` |
+| Find student | `cbse:findStudent <studentId|name>` | `cbse:findStudent STU002` |
+| Show available spots | `cbse:availableSpots <courseId>` | `cbse:availableSpots CS101` |
+| Mark attendance | `cbse:markAttendance <courseId> <sessionId> <studentId> <present|absent> <markedBy>` | `cbse:markAttendance CS101 S1 STU002 present LEC001` |
+| Generate attendance report | `cbse:attendanceReport <courseId> <sessionId>` | `cbse:attendanceReport CS101 S1` |
+| Update participation score | `cbse:updateParticipation <courseId> <studentId> <score> <updatedBy>` | `cbse:updateParticipation CS101 STU002 8 LEC001` |
+| View participation score | `cbse:participationScore <courseId> <studentId>` | `cbse:participationScore CS101 STU002` |
+| Enrollment info | `cbse:enrollmentInfo <courseId> <studentId>` | `cbse:enrollmentInfo CS101 STU002` |
+| Enrollment history | `cbse:enrollmentHistory <studentId>` | `cbse:enrollmentHistory STU002` |
+
 ### Communication Commands (UC16 - UC23)
 
 | Description              | Command                                          | Example                                          |
