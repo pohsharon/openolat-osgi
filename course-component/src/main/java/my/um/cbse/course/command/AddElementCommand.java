@@ -11,12 +11,7 @@ import my.um.cbse.api.model.CourseElementType;
 import my.um.cbse.api.model.CourseResult;
 import my.um.cbse.api.service.CourseService;
 
-/**
- * Karaf Shell Command: course:add-element
- * UC4 - Add a course element
- * 
- * Usage: course:add-element <courseId> <title> <type> <userId> [--parent <parentId>]
- */
+
 @Command(scope = "course", name = "add-element", description = "Add a course element")
 @Component(
     service = Action.class,

@@ -9,12 +9,7 @@ import org.osgi.service.component.annotations.Reference;
 import my.um.cbse.api.model.CourseResult;
 import my.um.cbse.api.service.CourseService;
 
-/**
- * Karaf Shell Command: course:delete
- * UC1 - Delete a course
- * 
- * Usage: course:delete <courseId> <userId>
- */
+
 @Command(scope = "course", name = "delete", description = "Delete a course")
 @Component(
     service = Action.class,

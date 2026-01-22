@@ -11,15 +11,11 @@ import my.um.cbse.api.model.CourseDesign;
 import my.um.cbse.api.model.CourseResult;
 import my.um.cbse.api.service.CourseService;
 
-/**
- * Karaf Shell Command: course:create
- * UC1 - Create a new course
- * 
- * Usage: course:create <title> <ownerId> [--design LEARNING_PATH|CONVENTIONAL] [--description <desc>] [--semester <sem>]
- */
+
 @Command(scope = "course", name = "create", description = "Create a new course")
 @Component(
     service = Action.class,
+    immediate = true,
     property = {
         "osgi.command.scope=course",
         "osgi.command.function=create"
