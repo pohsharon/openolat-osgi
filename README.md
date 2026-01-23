@@ -177,7 +177,7 @@ Your component should be:
 | Enrollment info | `cbse:enrollmentInfo <courseId> <studentId>` | `cbse:enrollmentInfo CS101 STU002` |
 | Enrollment history | `cbse:enrollmentHistory <studentId>` | `cbse:enrollmentHistory STU002` |
 
-### Communication Commands (UC16 - UC23)
+### Communication Commands (UC18 - UC20)
 
 | Description              | Command                                          | Example                                          |
 | :----------------------- | :----------------------------------------------- | :----------------------------------------------- |
