@@ -10,17 +10,7 @@ import org.osgi.service.component.annotations.Deactivate;
 import java.util.*;
 import java.util.stream.Collectors;
 
-/**
- * Course Management Service Implementation
- * Registered as an OSGi Declarative Service
- * 
- * Implements all 5 Use Cases:
- * - UC1: Create Course
- * - UC2: Manage Course Details and Settings
- * - UC3: Assign/Remove Course Staff
- * - UC4: Design Course Structure
- * - UC5: Manage Course Learning Materials
- */
+
 @Component(
     service = CourseService.class,
     immediate = true

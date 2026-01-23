@@ -13,20 +13,9 @@ import my.um.cbse.api.model.CourseStatus;
 import my.um.cbse.api.model.LearningResource;
 import my.um.cbse.api.model.LearningResourceType;
 
-/**
- * Course Management Service Interface
- * Defines the contract for course management operations
- * 
- * Covers Use Cases:
- * - UC1: Create Course
- * - UC2: Manage Course Details and Settings
- * - UC3: Assign/Remove Course Staff
- * - UC4: Design Course Structure
- * - UC5: Manage Course Learning Materials
- */
+
 public interface CourseService {
     
-    // ========== UC1: CREATE COURSE ==========
     
     /**
      * Create a new course learning resource
@@ -66,7 +55,7 @@ public interface CourseService {
      */
     CourseResult deleteCourse(String courseId, String userId);
     
-    // ========== UC2: MANAGE COURSE DETAILS AND SETTINGS ==========
+
     
     /**
      * Get course by ID
@@ -144,7 +133,7 @@ public interface CourseService {
     CourseResult updateAccessConfiguration(String courseId, String accessConfig, 
                                            boolean selfEnrollmentAllowed, String userId);
     
-    // ========== UC3: ASSIGN/REMOVE COURSE STAFF ==========
+  
     
     /**
      * Add a member to the course
@@ -221,7 +210,7 @@ public interface CourseService {
      */
     CourseResult revokeMemberRights(String courseId, String userId, List<String> rights, String revokedBy);
     
-    // ========== UC4: DESIGN COURSE STRUCTURE ==========
+  
     
     /**
      * Get course element tree (structure)
@@ -295,7 +284,7 @@ public interface CourseService {
     CourseResult setElementAccessCondition(String courseId, String elementId, 
                                            String accessCondition, String userId);
     
-    // ========== UC5: MANAGE COURSE LEARNING MATERIALS ==========
+
     
     /**
      * Create a new learning resource
